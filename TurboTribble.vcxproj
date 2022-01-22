@@ -92,6 +92,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="2DTransformComponent.h" />
     <ClInclude Include="Dependencies\glew\include\GL\eglew.h" />
     <ClInclude Include="Dependencies\glew\include\GL\glew.h" />
     <ClInclude Include="Dependencies\glew\include\GL\glxew.h" />
@@ -163,8 +164,13 @@
     <ClInclude Include="Engine\Source\VertexBuffer.h" />
     <ClInclude Include="Engine\Source\Viewport.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="UIButtonComponent.h" />
+    <ClInclude Include="UICheckBoxComponent.h" />
+    <ClInclude Include="UIImageComponent.h" />
+    <ClInclude Include="UIInputBoxComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="2DTransformComponent.cpp" />
     <ClCompile Include="Dependencies\Imgui\imgui.cpp" />
     <ClCompile Include="Dependencies\Imgui\ImGuizmo.cpp" />
     <ClCompile Include="Dependencies\Imgui\imgui_demo.cpp" />
@@ -221,6 +227,10 @@
     <ClCompile Include="Engine\Source\TransformComponent.cpp" />
     <ClCompile Include="Engine\Source\VertexBuffer.cpp" />
     <ClCompile Include="Engine\Source\Viewport.cpp" />
+    <ClCompile Include="UIButtonComponent.cpp" />
+    <ClCompile Include="UICheckBoxComponent.cpp" />
+    <ClCompile Include="UIImageComponent.cpp" />
+    <ClCompile Include="UIInputBoxComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TurboTribble.rc" />
