@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{04FA9777-0911-49B2-9F45-5FA5C639F2AB}</ProjectGuid>
+    <ProjectGuid>{20A5FEF7-1A40-4A13-AAFA-B8B415A4B1A6}</ProjectGuid>
     <RootNamespace>SDLGame</RootNamespace>
-    <ProjectName>Ragnar Engine</ProjectName>
+    <ProjectName>TurboTribble</ProjectName>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -221,7 +221,7 @@
     <ClCompile Include="Engine\Source\Viewport.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Ragnar Engine.rc" />
+    <ResourceCompile Include="TurboTribble.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Output\Settings\EngineResources\logo.ico" />
