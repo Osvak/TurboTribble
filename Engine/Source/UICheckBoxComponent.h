@@ -2,7 +2,6 @@
 
 #include "Component.h"
 #include "Color.h"
-#include "Text.h"
 
 class UICheckBoxComponent : public Component
 {
@@ -14,21 +13,18 @@ public:
 	bool Update(float dt) override;
 	void Draw() override;
 	void OnEditor() override;
-	void OnClick() override;
-	float2 GetParentPosition();
 
 public:
-	Color disabledColor = White;
-	Color pressedColor = Red;
-	Color focusedColor = Blue;
-	Color normalColor = Green;
-	Color selectedColor = Black;
+
+	Color textColor = white;
+	Color disabledColor = white;
+	Color pressedColor = red;
+	Color focusedColor = blue;
+	Color normalColor = green;
+	Color selectedColor = black;
 
 	bool checked;
-
 	Text checkboxText;
-	Color textColor = White;
+
 	char text[64] = "V-Sync";
-	float fontScale = 0.5;
-	bool firstTime;
 };

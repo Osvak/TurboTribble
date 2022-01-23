@@ -466,26 +466,26 @@ void ModuleUI::DeleteUIGameObjects()
 
 	for (int a = UIGameObjectsQuantity - 1; a >= 0; a--)
 	{
-		app->editor->objectSelected = UIGameObjects[a];
+		app->editor->SetGO(UIGameObjects[a]);
 		int i;
-		int id = app->editor->objectSelected->id;
+		int id = app->editor->GetGO()->id;
 		for (i = 0; i < app->scene->gameObjects.size(); i++)
 		{
 			if (id == app->scene->gameObjects[i]->id)
 			{
-				app->editor->objectSelected = nullptr;
+				app->editor->SetGO(nullptr);
 
 
-				for (int i = 0; i < app->userInterface->UIGameObjects.size(); i++)
+				for (int i = 0; i < app->ui->UIGameObjects.size(); i++)
 				{
-					if (app->userInterface->UIGameObjects[i]->id == id)
+					if (app->ui->UIGameObjects[i]->id == id)
 					{
-						GameObject* go = app->userInterface->UIGameObjects[i];
+						GameObject* go = app->ui->UIGameObjects[i];
 						uint comp = go->GetComponentID(ComponentType::UI_IMAGE);
 						std::vector<Component*> components = go->GetComponents();
 						if (comp == -1 || (comp != -1 && components[comp]->UIid != 10))
 						{
-							Transform2DComponent* component2d = app->userInterface->UIGameObjects[i]->getTransform2D();
+							Transform2DComponent* component2d = app->ui->UIGameObjects[i]->GetComponent<Transform2DComponent>();
 							component2d->position.x = 70000;
 							component2d->position.z = 70000;
 						}

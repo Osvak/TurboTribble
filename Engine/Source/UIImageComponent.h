@@ -15,6 +15,7 @@ public:
 	void OnEditor() override;
 
 private:
-	Color color;
+
+	Color color = blue;
 	std::string text;
 };

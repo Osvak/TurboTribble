@@ -1,15 +1,15 @@
+#include "UIImageComponent.h"
+
 #include "Application.h"
 #include "SDL.h"
-#include "UIImageComponent.h"
+
+#include "ModuleEditor.h"
+
+#include "glew/include/GL/glew.h"
 
 UIImageComponent::UIImageComponent(int id, std::string text)
 {
-	name = "Image Component";
 	type = ComponentType::UI_IMAGE;
-	this->text = "Image Component";
-	state = State::NORMAL;
-	color = White;
-	UIid = id;
 }
 
 UIImageComponent::~UIImageComponent()
@@ -27,8 +27,8 @@ void UIImageComponent::Draw()
 	MyPlane* planeToDraw = nullptr;
 	int auxId = owner->id;
 
-	for (int i = 0; i < App->editor->planes.size(); i++)
-		if (App->editor->planes[i]->id == auxId) planeToDraw = App->editor->planes[i];
+	for (int i = 0; i < app->editor->planes.size(); i++)
+		if (app->editor->planes[i]->id == auxId) planeToDraw = app->editor->planes[i];
 
 	glAlphaFunc(GL_GREATER, 0.5);
 	glEnable(GL_ALPHA_TEST);
