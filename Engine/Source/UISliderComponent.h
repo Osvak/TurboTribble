@@ -17,26 +17,20 @@ public:
 
 	bool Update(float dt) override;
 	void Draw() override;
-	void OnEditor() override;
-	float2 GetParentPosition();
 
 	float value;
 	float minValue;
 	float maxValue;
-	MyPlane* thePlane;
-	bool completed;
-	float barProgres;
+
 public:
-	Color disabledColor = White;
-	Color pressedColor = Red;
-	Color focusedColor = Blue;
-	Color normalColor = Green;
-	Color selectedColor = Black;
 
-	bool drawRect;
+	Color disabledColor = white;
+	Color pressedColor = red;
+	Color focusedColor = blue;
+	Color normalColor = green;
+	Color selectedColor = black;
+	Color textColor = white;
 
-	Text sliderText;
-	Color textColor = White;
-	char text[64] = "Camera FOV";
-	float fontScale = 0.5;
+	Text text;
+	char text[64] = "FOV";
 };

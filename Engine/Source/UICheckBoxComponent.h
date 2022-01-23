@@ -24,7 +24,7 @@ public:
 	Color selectedColor = black;
 
 	bool checked;
-	Text checkboxText;
 
+	Text checkboxText;
 	char text[64] = "V-Sync";
 };
