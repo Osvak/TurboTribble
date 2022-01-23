@@ -1,8 +1,8 @@
-## TurboTribble
+# TurboTribble
 
 TurboTribble is a game engine that we've developed as a project of the Motors de Videojocs subject in [CITM](https://www.citm.upc.edu/) a UPC University center. In this software you can create your dream videogames with an object system developing.
 
-### Team
+## Team
 
 [**Òscar Canales**](https://github.com/Osvak)
 
@@ -12,7 +12,7 @@ TurboTribble is a game engine that we've developed as a project of the Motors de
 
 ![](docs/CarlesPFP.png)
 
-### Main Core Sub-Systems
+## Main Core Sub-Systems
 
 - Camera system
 - Model and texture loader (with drag and drop)
@@ -26,20 +26,20 @@ TurboTribble is a game engine that we've developed as a project of the Motors de
 - Guizmos for better user experience
 - Multiple viewports
 
-### User Interface Sub-System
+## User Interface Sub-System
 
 With this Sub-system 
 
-### User Interface Demo 
+## User Interface Demo 
 
 
-### Useful Links
+## Useful Links
 
 [TurboTribble Repository](https://github.com/Osvak/TurboTribble)
 
 [Download latest release](https://github.com/Osvak/TurboTribble/releases)
 
-### License
+## License
 
 MIT License
 
