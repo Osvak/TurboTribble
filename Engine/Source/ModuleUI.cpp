@@ -118,10 +118,9 @@ bool ModuleUI::PreUpdate(float dt)
 {
 	if (app->scene->GetGameState() == GameState::PLAYING)
 	{
-		float2 mousePos = { (float)app->input->GetMouseX() ,(float)app->input->GetMouseY() };
 		float2 mPos = { ImGui::GetIO().MousePos.x, ImGui::GetIO().MousePos.y };
 		float4 viewport = app->editor->GetViewport()->GetBounds();
-		mousePos = { mPos.x - viewport.x , mPos.y - viewport.y };
+		float2 mousePos = { mPos.x - viewport.x , mPos.y - viewport.y };
 
 		if (mousePos.x > viewport.x && mousePos.x < viewport.x + viewport.z && mousePos.y > viewport.y && mousePos.y < viewport.y + viewport.w)
 		{
@@ -208,7 +207,7 @@ bool ModuleUI::Update(float dt)
 		{
 			components[button]->Update(dt);
 			UIButtonComponent* auxiliar = go->GetComponent<UIButtonComponent>();
-			defaultText = auxiliar->buttonText;
+			defaultText = auxiliar->text;
 			color.x = auxiliar->textColor.r;
 			color.y = auxiliar->textColor.g;
 			color.z = auxiliar->textColor.b;
@@ -316,13 +315,11 @@ bool ModuleUI::PostUpdate()
 			{
 				components[button]->Draw();
 				UIButtonComponent* auxiliar = go->GetComponent<UIButtonComponent>();
-				RenderText(auxiliar->buttonText.textt, auxiliar->buttonText.X, auxiliar->buttonText.Y, auxiliar->buttonText.Scale, auxiliar->buttonText.Color);
+				RenderText(auxiliar->text.textt, auxiliar->text.X, auxiliar->text.Y, auxiliar->text.Scale, auxiliar->text.Color);
 			}
 			if (checkbox != -1)
 			{
 				components[checkbox]->Draw();
-				UICheckBoxComponent* auxiliar = go->GetComponent<UICheckBoxComponent>();
-				RenderText(auxiliar->checkboxText.textt, auxiliar->checkboxText.X, auxiliar->checkboxText.Y, auxiliar->checkboxText.Scale, auxiliar->checkboxText.Color);
 			}
 			if (image != -1)
 			{
@@ -331,17 +328,11 @@ bool ModuleUI::PostUpdate()
 			if (inputbox != -1)
 			{
 				components[inputbox]->Draw();
-				UIInputBoxComponent* auxiliar = go->GetComponent<UIInputBoxComponent>();
-				RenderText(auxiliar->aux.textt, auxiliar->aux.X, auxiliar->aux.Y, auxiliar->aux.Scale, auxiliar->aux.Color);
 			}
 			if (slider != -1)
 			{
 				components[slider]->Draw();
-				UISliderComponent* auxiliar = go->GetComponent<UISliderComponent>();
-				RenderText(auxiliar->sliderText.textt, auxiliar->sliderText.X, auxiliar->sliderText.Y, auxiliar->sliderText.Scale, auxiliar->sliderText.Color);
-			}
 		}
-
 		orderedGameObjects.clear();
 		orderedIndices.clear();
 	}
@@ -363,7 +354,7 @@ bool ModuleUI::PostUpdate()
 			{
 				components[button]->Draw();
 				UIButtonComponent* auxiliar = go->GetComponent<UIButtonComponent>();
-				RenderText(auxiliar->buttonText.textt, auxiliar->buttonText.X, auxiliar->buttonText.Y, auxiliar->buttonText.Scale, auxiliar->buttonText.Color);
+				RenderText(auxiliar->text.textt, auxiliar->text.X, auxiliar->text.Y, auxiliar->text.Scale, auxiliar->text.Color);
 			}
 			if (checkbox != -1)
 			{
@@ -385,7 +376,7 @@ bool ModuleUI::PostUpdate()
 			{
 				components[slider]->Draw();
 				UISliderComponent* auxiliar = go->GetComponent<UISliderComponent>();
-				RenderText(auxiliar->sliderText.textt, auxiliar->sliderText.X, auxiliar->sliderText.Y, auxiliar->sliderText.Scale, auxiliar->sliderText.Color);
+				RenderText(auxiliar->text.textt, auxiliar->text.X, auxiliar->text.Y, auxiliar->text.Scale, auxiliar->text.Color);
 			}
 		}
 	}
