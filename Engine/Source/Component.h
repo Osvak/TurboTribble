@@ -12,6 +12,10 @@ enum class ComponentType
 	MESH_RENDERER,
 	MATERIAL,
 	CAMERA,
+	UI_BUTTON,
+	UI_CHECKBOX,
+	UI_IMAGE,
+	UI_INPUTBOX,
 };
 
 class Component
