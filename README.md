@@ -1,25 +1,37 @@
-# Ragnar Engine
+# TurboTribble
+Engine for the Videogame Engines subject imparted in the Videogame Design and Development degree of CITM-UPC.
 
-Forked from [Ragnar Engine](https://github.com/UriKurae/Ragnar-Engine)
+You can check more about the TurboTribble engine [here!](https://github.com/FireAlfa/TurboTribble)
 
-Ragnar Engine is a Video Game Engine created by [Lucas Pérez](https://github.com/LucasPG14). and [Oriol Bernal](https://github.com/UriKurae)., two students from the university Universitat Politècnica de Catalunya (CITM). 
 
-## Planning
+ ## Members 
+ * [Òscar Canales](https://github.com/Osvak)
+ * [Carles Garriga](https://github.com/FireAlfa)
 
-The purpose of this project is to create a friendly-user, well optimized Game Engine for the subject "VideoGame Engines" from the 3rd year. The short term plan is to implement the basic features of a Game Engine, such as loading models, working in a 3D environment, etc...
+## Controls
 
-For the long term, we would love to create a game with this Video Game Engine
+- Right click + WASD: Move the camera in it's own axis.
+- Right click + Q/E: Move the camera up or down in it's own axis.
+- Mouse scroll wheel: Move the camera forward and backwards in it's own axis.
+- While selecting a GameObject and holding Alt + left click: Orbit the camera around the GameObject.
+- While selecting a GameObject and pressing F: Focus the GameObject.
+- Key T: Reset the camera (World axis reset).
+- Right click GameObject in the hierarchy: Open GameObject options.
+- Supr while a GameObject is selected: Delete the GameObject.
+- Supr while a resource is selected: Delete the resource.
+- Hold left click in the hierarchy menu: Move GameObjects in the hierarchy (Reparenting).
+- W,E,R buttons: show Move, Scale, Rotate guizmos. 
+- Ctrl + N: Generate a new scene (You will be warned to save your current project).
+- Ctrl + O: Opens the explorer window to search for a file and open it.
+- Ctrl + S: Saves the current Scene.
+- Ctrl + Shift + S: Opens the explorer window to save the scene in a desired location.
+- Ctrl + D: Duplicates the selected game object.
 
-## Installation
-
-The installation is pretty straight-forward and easy, just go into the [releases tab](https://github.com/UriKurae/Ragnar-Engine/releases), and download the latest version.
-The download files include an exe and you just have to execute it to test our engine.
-
-**Carefull**: You can edit the config file to modify some properties like the window and everything, but they come with an optimal configuration already.
+- Play/Stop/Pause and Advance frame: To start a game preview, hit the play button, when you hit the play button, the preview will start, and the play button will be swapped by
+the stop button. Hitting the stop button will stop the game preview.
+Pause button will pause the game preview until you hit it again. When having the game in pause, you can advance one frame if you want. Also, the buttons and the whole engine will have different UI colors to let the user know that he is in game preview mode.
 
 ## Features
-
-v0.8
 
 - Stencil border for the selected GameObject.
 - Raycasting objects to select them (MousePicking).
@@ -46,59 +58,31 @@ v0.8
 - AABB system for all the GameObjects.
 - Shortcuts and explorer viewer for save, load and open files for better user experience.
 
-v0.5
 
-- Camera movement (Rotate, Move, Orbit, Focus).
-- Drag and drop textures and models.
-- Load and save the configuration.
-- GameObject and components system (Transform component, Mesh Renderer and Material Component).
-- GameObject options (Rename, activate, move in the hierarchy, delete).
-- Inspector information (Transform, mesh renderer, material).
-- Own basic shapes (Pyramid, Sphere, Cube and Cylinder).
-- Saving images to DDS for lower size.
-- Beautiful and usable UX (provided by ImGui).
-- Debug options for GameObjects (Normals, Normal length, Normal color, etc...).
-- System information (Console, Hardware, Software, etc...).
-- Opengl options (Wireframe Mode, Texture2D, Vsync, Stencil, etc...).
-- Ability to close and reopen menus from the editor.
+## References
 
-## Controls
-
-- Right click + WASD: Move the camera in it's own axis.
-- Right click + Q/E: Move the camera up or down in it's own axis.
-- Mouse scroll wheel: Move the camera forward and backwards in it's own axis.
-- While selecting a GameObject and holding Alt + left click: Orbit the camera around the GameObject.
-- While selecting a GameObject and pressing F: Focus the GameObject.
-- Key T: Reset the camera (World axis reset).
-- Right click GameObject in the hierarchy: Open GameObject options.
-- Supr while a GameObject is selected: Delete the GameObject.
-- Supr while a resource is selected: Delete the resource.
-- Hold left click in the hierarchy menu: Move GameObjects in the hierarchy (Reparenting).
-- W,E,R buttons: show Move, Scale, Rotate guizmos. 
-- Ctrl + N: Generate a new scene (You will be warned to save your current project).
-- Ctrl + O: Opens the explorer window to search for a file and open it.
-- Ctrl + S: Saves the current Scene.
-- Ctrl + Shift + S: Opens the explorer window to save the scene in a desired location.
-- Ctrl + D: Duplicates the selected game object.
-
-- Play/Stop/Pause and Advance frame: To start a game preview, hit the play button, when you hit the play button, the preview will start, and the play button will be swapped by
-the stop button. Hitting the stop button will stop the game preview.
-Pause button will pause the game preview until you hit it again. When having the game in pause, you can advance one frame if you want. Also, the buttons and the whole engine will have different UI colors to let the user know that he is in game preview mode.
-
-## User Interface
-
-The menus are also very straight-forward, you can navigate through them and have multiple options for the engine itself, there are many options, so it's highly encouraged to test everything to understand the interface, **but keep in mind the following**:
-- You can close any tab from the user interface, but don't worry, as you can re-open any window at any time.
-- You can click and hold any tab to reallocate it anywhere you want.
-
-
-## Game Engine Developers
-
-- [Lucas Pérez García](https://github.com/LucasPG14).
-- [Oriol Bernal Martínez](https://github.com/UriKurae).
+The base project is taken from [Ragnar Engine](https://github.com/UriKurae/Ragnar-Engine) by UriKurae
 
 ## License
 
-**Copyright (c) Lucas Pérez and Oriol Bernal. License Under the MIT License.**
+MIT License
 
-- [MIT License link to check more details about it.](https://opensource.org/licenses/MIT)
+Copyright (c) 2022 Òscar Canales and Carles Garriga
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
