@@ -32,6 +32,7 @@ With this Sub-system
 
 ## User Interface Demo 
 
+![](docs/Scene.png)
 
 ## Useful Links
 
