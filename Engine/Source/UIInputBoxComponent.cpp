@@ -4,10 +4,10 @@
 #include "ModuleCamera3D.h"
 #include "CameraComponent.h"
 
-UIInputBoxComponent::UIInputBoxComponent(int id, std::string _text)
+UIInputBoxComponent::UIInputBoxComponent(int id, std::string text)
 {
 	type = ComponentType::UI_INPUTBOX;
-	text.setText(_text, 5, 5, 0.5, { 255,255,255 });
+	inputBoxText.SetText(text, float2(5, 5), 0.5f, float4(255, 255, 255, 255));
 }
 
 UIInputBoxComponent::~UIInputBoxComponent()

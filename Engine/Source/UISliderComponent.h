@@ -31,6 +31,6 @@ public:
 	Color selectedColor = black;
 	Color textColor = white;
 
-	Text text;
+	Text sliderText;
 	char text[64] = "FOV";
 };

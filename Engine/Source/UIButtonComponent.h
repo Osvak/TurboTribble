@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Component.h"
+#include "Text.h"
+#include "Color.h"
 #include <string>
 
 class SDL_Rect;
@@ -17,9 +19,16 @@ public:
 	bool OnPressed();
 
 private:
-	std::string buttonText = "Button";
+
+	Text buttonText;
+	std::string text = "Button";
+
+	Color textColor = white;
+	Color disabledColor = white;
+	Color pressedColor = red;
+	Color focusedColor = blue;
+	Color normalColor = green;
+	Color selectedColor = black;
 
 	bool active = true;
-
-
 };

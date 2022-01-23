@@ -1,12 +1,13 @@
-#include "Application.h"
-#include "SDL.h"
 #include "UICheckboxComponent.h"
 
-UICheckBoxComponent::UICheckBoxComponent(int id, std::string _text)
+#include "Application.h"
+#include "SDL.h"
+
+UICheckBoxComponent::UICheckBoxComponent(int id, std::string text)
 {
 	type = ComponentType::UI_CHECKBOX;
 	checked = false;
-	checkboxText.setText(_text, 5, 5, 0.5, { 255,255,255 });
+	checkboxText.SetText(text, float2(5, 5), 0.5f, float4(255, 255, 255, 255));
 }
 
 UICheckBoxComponent::~UICheckBoxComponent()

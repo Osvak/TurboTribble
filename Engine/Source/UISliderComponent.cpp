@@ -4,13 +4,13 @@
 #include "ModuleCamera3D.h"
 #include "CameraComponent.h"
 
-UISliderComponent::UISliderComponent(int id, std::string _text)
+UISliderComponent::UISliderComponent(int id, std::string text)
 {
 	type = ComponentType::UI_SLIDER;
 	value = 0;
 	minValue = 50;
 	maxValue = 100;
-	text.setText(_text, 5, 5, 0.5, { 255,255,255 });
+	sliderText.SetText(text, float2(5, 5), 0.5f, float4(255,255,255,255));
 }
 
 UISliderComponent::~UISliderComponent()

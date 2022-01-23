@@ -14,7 +14,7 @@ public:
 
 	bool Update(float dt) override;
 	void Draw() override;
-	void OnEditor() override;
+	//void OnEditor() override;
 
 public:
 
@@ -25,6 +25,6 @@ public:
 	Color selectedColor = black;
 	Color textColor = white;
 
-	Text text;
+	Text inputBoxText;
 	char text[64] = "Enter name";
 };

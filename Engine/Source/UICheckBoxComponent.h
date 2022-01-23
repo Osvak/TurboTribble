@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Component.h"
+#include "Text.h"
 #include "Color.h"
 
 class UICheckBoxComponent : public Component
