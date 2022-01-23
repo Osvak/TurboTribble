@@ -241,6 +241,29 @@ Component* GameObject::CreateComponent(ComponentType type)
 
 	return component;
 }
+Component* GameObject::CreateUIComponent(ComponentType type)
+{
+	Component* component = nullptr;
+
+	switch (type)
+	{
+	case ComponentType::UI_BUTTON:
+		//component = new ButtonComponent(1, SDL_Rect({ 0, 0, 100, 100 }), "a", nullptr);
+		break;
+	case ComponentType::UI_CHECKBOX:
+		//component = new CheckboxComponent(2, SDL_Rect({ 0, 0, 100, 100 }), "b", nullptr);
+		break;
+	case ComponentType::UI_SLIDER:
+		//component = new SliderComponent(3, SDL_Rect({ 0, 0, 100, 100 }), "c", nullptr, nullptr);
+		break;
+	case ComponentType::UI_INPUTBOX:
+		//component = new UIInputBoxComponent(4, SDL_Rect({ 0, 0, 100, 100 }), "d", nullptr);
+		break;
+	default:
+		break;
+	}
+	return component;
+}
 
 void GameObject::AddComponent(Component* component)
 {
@@ -437,4 +460,17 @@ void GameObject::OnSave(JsonParsing& node, JSON_Array* array)
 	{
 		children[i]->OnSave(node, array);
 	}
+}
+
+
+int GameObject::GetComponentID(ComponentType type)
+{
+	for (int i = 0; i < components.size(); i++)
+	{
+		if (components[i]->type == type)
+		{
+			return i;
+		}
+	}
+	return -1;
 }

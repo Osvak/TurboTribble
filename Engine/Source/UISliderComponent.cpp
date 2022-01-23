@@ -1,26 +1,32 @@
 #include "Application.h"
 #include "SDL.h"
-#include "UICheckboxComponent.h"
+#include "UISliderComponent.h"
+#include "ModuleCamera3D.h"
+#include "CameraComponent.h"
 
-UICheckboxComponent::UICheckboxComponent(int id, std::string _text)
+UISliderComponent::UISliderComponent(int id, std::string _text)
 {
-	name = "CheckBox Component";
-	type = ComponentType::UI_CHECKBOX;
+	name = "Slider Component";
+	type = ComponentType::UI_SLIDER;
+	value = 0;
+	minValue = 70;
+	maxValue = 120;
+	drawRect = false;
 	state = State::NORMAL;
-	checked = false;
-	checkboxText.setText(_text, 5, 5, 0.5, { 255,255,255 });
-	UIid = id;
-	firstTime = true;
+	barProgres = 0.0f;
+	completed = false;
+	thePlane = App->editor->planes[App->editor->planes.size() - 1];
+	sliderText.setText(_text, 5, 5, 0.5, { 255,255,255 });
 }
 
-UICheckboxComponent::~UICheckboxComponent()
+UISliderComponent::~UISliderComponent()
 {
 
 }
 
-void UICheckboxComponent::Update()
+void UISliderComponent::Update()
 {
-	checkboxText.SetOnlyPosition(float2(GetParentPosition().x, GetParentPosition().y));
+	sliderText.SetOnlyPosition(float2(GetParentPosition().x, GetParentPosition().y));
 
 	if (!active)
 		state = State::DISABLED;
@@ -46,17 +52,7 @@ void UICheckboxComponent::Update()
 			// If mouse button pressed -> Generate event!
 			if (App->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_UP)
 			{
-				if (firstTime)
-				{
-					OnClick();
-					OnClick();
-					OnClick();
-					firstTime = false;
-				}
-				else
-				{
-					OnClick();
-				}
+				OnClick();
 			}
 		}
 		else state = State::NORMAL;
@@ -65,24 +61,68 @@ void UICheckboxComponent::Update()
 		{
 			state = State::SELECTED;
 			if (App->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
-			{
-				if (firstTime)
-				{
-					OnClick();
-					OnClick();
-					OnClick();
-					firstTime = false;
-				}
-				else
-				{
-					OnClick();
-				}
-			}
+				OnClick();
 		}
 	}
+
+	//barProgres += 0.001;
+	if (state == State::PRESSED) {
+		float2 mousePos = { (float)App->input->GetMouseX() ,(float)App->input->GetMouseY() };
+		float2 mPos = { ImGui::GetIO().MousePos.x, ImGui::GetIO().MousePos.y };
+		float4 viewport = App->editor->viewport;
+		float2 fMousePos = { mPos.x - viewport.x , mPos.y - viewport.y };
+
+
+		ComponentTransform2D* transform2D = owner->getTransform2D();
+		float posXMin = ((viewport.z / 2) + (transform2D->position.x)) - (transform2D->buttonWidth / 2);
+		float posXMax = ((viewport.z / 2) + (transform2D->position.x)) + (transform2D->buttonWidth / 2);
+
+		if (fMousePos.x > posXMin && fMousePos.x < posXMax)
+		{
+			float thePos = fMousePos.x - posXMin;
+			float total = posXMax - posXMin;
+
+
+			barProgres = thePos / total;
+
+			if (state == State::PRESSED)
+			{
+				App->camera->GameCam->horizontalFov = maxValue * barProgres;
+
+				App->camera->GameCam->frustum.horizontalFov = math::DegToRad(App->camera->GameCam->horizontalFov); // Convert from deg to rads (All maths works with rads but user will see the info in degs)
+				App->camera->GameCam->frustum.verticalFov = 2 * Atan((Tan(App->camera->GameCam->frustum.horizontalFov / 2)) * ((float)SCREEN_HEIGHT / (float)SCREEN_WIDTH));
+				App->camera->GameCam->changeViewMatrix();
+				App->renderer3D->OnResize((float)SCREEN_WIDTH, (float)SCREEN_HEIGHT);
+			}
+
+
+			if (barProgres < 0.5f)
+			{
+				/*thePlane->texCoords[0] = 1;
+				thePlane->texCoords[6] = 1;*/
+				thePlane->texCoords[0] = (0.5 - barProgres);
+				thePlane->texCoords[4] = (0.5 - barProgres);
+			}
+			else if (barProgres >= 0.5f) {
+
+				float aux = barProgres - 0.5;
+				thePlane->texCoords[2] = (1 - aux);
+				thePlane->texCoords[6] = (1 - aux);
+			}
+			glDeleteBuffers(thePlane->texCoords.size() * sizeof(GLfloat), &thePlane->TBO);
+
+			glGenBuffers(1, &thePlane->TBO);
+			glBindBuffer(GL_ARRAY_BUFFER, thePlane->TBO);
+			glBufferData(GL_ARRAY_BUFFER, thePlane->texCoords.size() * sizeof(GLfloat), thePlane->texCoords.data(), GL_STATIC_DRAW);
+
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+		}
+	}
+
+
 }
 
-void UICheckboxComponent::Draw()
+void UISliderComponent::Draw()
 {
 	MyPlane* planeToDraw = nullptr;
 	int auxId = owner->id;
@@ -120,13 +160,9 @@ void UICheckboxComponent::Draw()
 	glColor3f(255, 255, 255);
 }
 
-void UICheckboxComponent::OnEditor(int i)
+void UISliderComponent::OnEditor(int i)
 {
-	// General variables
-	static float multiplier = 1;
-	static float fadeDuration = 0.1f;
-
-	// Manage if colors are being edited or not
+	// Colors
 	static bool normalEditable = false;
 	static bool pressedEditable = false;
 	static bool focusedEditable = false;
@@ -162,7 +198,7 @@ void UICheckboxComponent::OnEditor(int i)
 	if (ImGui::ColorButton("Text Color", ImVec4(textColor.r, textColor.g, textColor.b, textColor.a)))
 		textColorEditable = !textColorEditable;
 
-	checkboxText.setOnlyColor({ textColor.r, textColor.g, textColor.b });
+	sliderText.setOnlyColor({ textColor.r, textColor.g, textColor.b });
 
 	if (normalEditable)
 	{
@@ -189,66 +225,17 @@ void UICheckboxComponent::OnEditor(int i)
 		ImGui::ColorPicker3("Text Color", &textColor);
 	}
 
-	ImGui::SliderFloat("Color Multiplier", &multiplier, 1, 5);
-	ImGui::InputFloat("Fade Duration", &fadeDuration);
+	ImGui::InputFloat("Min Value", &minValue);
+	ImGui::InputFloat("Max Value", &maxValue);
+	ImGui::SliderFloat("Value", &value, minValue, maxValue);
+
 	ImGui::InputText("Text", text, IM_ARRAYSIZE(text));
-	ImGui::DragFloat("Font Size", &checkboxText.Scale, 0.1, 0, 10);
-	checkboxText.setOnlyText(text);
+	ImGui::DragFloat("Font Size", &sliderText.Scale, 0.1, 0, 10);
+	sliderText.setOnlyText(text);
 }
 
-void UICheckboxComponent::OnClick()
+float2 UISliderComponent::GetParentPosition()
 {
-	checked = !checked;
-
-	if (owner != nullptr)
-	{
-		App->editor->objectSelected = owner;
-
-		int oldMaterialId;
-		oldMaterialId = owner->SearchComponent(owner, ComponentType::MATERIAL);
-		if (oldMaterialId != -1)
-		{
-			owner->components.erase(owner->components.begin() + oldMaterialId);
-		}
-
-		else
-		{
-			if (checked)
-			{
-				owner->CreateComponent(ComponentType::MATERIAL, "Library/Textures/TextCheckboxTrue.dds", true);
-				if (UIid == 3) App->maxMs = 1000 / 60;
-				else
-				{
-					for (int i = 0; i < App->userInterface->UIGameObjects.size(); i++)
-					{
-						GameObject* auxGo = App->userInterface->UIGameObjects[i];
-						uint comp = auxGo->SearchComponent(auxGo, ComponentType::UI_IMAGE);
-						if (comp != -1 && auxGo->components[comp]->UIid == 10) auxGo->getTransform2D()->position.x = 0;
-					}
-				}
-			}
-			else
-			{
-				owner->CreateComponent(ComponentType::MATERIAL, "Library/Textures/TextCheckboxFalse.dds", true);
-				if (UIid == 3) App->maxMs = 0;
-				else
-				{
-					for (int i = 0; i < App->userInterface->UIGameObjects.size(); i++)
-					{
-						GameObject* auxGo = App->userInterface->UIGameObjects[i];
-						uint comp = auxGo->SearchComponent(auxGo, ComponentType::UI_IMAGE);
-						if (comp != -1 && auxGo->components[comp]->UIid == 10) auxGo->getTransform2D()->position.x = 70000;
-					}
-				}
-			}
-
-			owner->components[owner->components.size() - 1]->owner = owner;
-		}
-	}
-}
-
-float2 UICheckboxComponent::GetParentPosition()
-{
-	Transform2DComponent* transform = owner->getTransform2D();
-	return { transform->position.x - (strlen(text) * 12 * checkboxText.Scale) - (transform->scale.x / 4), transform->position.y - 5 };
+	ComponentTransform2D* transform = owner->getTransform2D();
+	return { transform->position.x - (strlen(text) * 12 * sliderText.Scale), transform->position.y - 5 };
 }

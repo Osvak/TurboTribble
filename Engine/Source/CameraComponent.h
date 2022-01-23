@@ -31,6 +31,9 @@ public:
 
 	float4x4 matrixViewFrustum;
 	float4x4 matrixProjectionFrustum;
+
+	Frustum GetFrustum() { return camera; };
+
 private:
 
 	Frustum camera;

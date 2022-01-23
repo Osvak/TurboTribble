@@ -4,19 +4,28 @@
 #include "Color.h"
 #include "Text.h"
 
-class UICheckBoxComponent : public Component
+class SDL_Rect;
+class SDL_Color;
+class SDL_Texture;
+
+class UISliderComponent : public Component
 {
 public:
 
-	UICheckBoxComponent(int id, std::string text);
-	virtual ~UICheckBoxComponent();
+	UISliderComponent(int id, std::string text);
+	virtual ~UISliderComponent();
 
 	bool Update(float dt) override;
 	void Draw() override;
 	void OnEditor() override;
-	void OnClick() override;
 	float2 GetParentPosition();
 
+	float value;
+	float minValue;
+	float maxValue;
+	MyPlane* thePlane;
+	bool completed;
+	float barProgres;
 public:
 	Color disabledColor = White;
 	Color pressedColor = Red;
@@ -24,11 +33,10 @@ public:
 	Color normalColor = Green;
 	Color selectedColor = Black;
 
-	bool checked;
+	bool drawRect;
 
-	Text checkboxText;
+	Text sliderText;
 	Color textColor = White;
-	char text[64] = "V-Sync";
+	char text[64] = "Camera FOV";
 	float fontScale = 0.5;
-	bool firstTime;
 };

@@ -27,7 +27,7 @@ bool ModuleScene::Start()
 {
 	RG_PROFILING_FUNCTION("Starting Scene");
 
-	GameObject* camera = CreateGameObject(nullptr);
+	camera = CreateGameObject(nullptr);
 	camera->CreateComponent(ComponentType::CAMERA);
 	camera->SetName("Camera");
 	

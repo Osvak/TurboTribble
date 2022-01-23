@@ -36,6 +36,7 @@ public:
 
 	inline AABB GetLocalAABB() { return localBoundingBox; }
 	const std::shared_ptr<Mesh> GetMesh() const { return mesh; }
+
 private:
 	TransformComponent* transform;
 	MaterialComponent* material;

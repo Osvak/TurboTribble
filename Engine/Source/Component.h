@@ -12,10 +12,12 @@ enum class ComponentType
 	MESH_RENDERER,
 	MATERIAL,
 	CAMERA,
+	UI_2DTRANSFORM,
 	UI_BUTTON,
 	UI_CHECKBOX,
 	UI_IMAGE,
 	UI_INPUTBOX,
+	UI_SLIDER,
 };
 
 class Component
@@ -50,9 +52,17 @@ public:
 	virtual bool OnSave(JsonParsing& node, JSON_Array* array) { return true; }
 
 public:
+
 	ComponentType type;
 	bool active;
 	GameObject* owner;
+
+	float3 lastPosition;
+	float3 lastRotation;
+	float3 lastScale;
+	float3 position;
+	float3 rotation;
+	float3 scale;
 
 	bool collapsed;
 };

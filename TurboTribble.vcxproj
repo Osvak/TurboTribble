@@ -110,6 +110,7 @@
     <ClInclude Include="Dependencies\json\parson.h" />
     <ClInclude Include="Dependencies\mmgr\mmgr.h" />
     <ClInclude Include="Dependencies\mmgr\nommgr.h" />
+    <ClInclude Include="Engine\Source\2DTransformComponent.h" />
     <ClInclude Include="Engine\Source\AboutMenu.h" />
     <ClInclude Include="Engine\Source\Application.h" />
     <ClInclude Include="Engine\Source\AssimpDefs.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Engine\Source\UICheckBoxComponent.h" />
     <ClInclude Include="Engine\Source\UIImageComponent.h" />
     <ClInclude Include="Engine\Source\UIInputBoxComponent.h" />
+    <ClInclude Include="Engine\Source\UISliderComponent.h" />
     <ClInclude Include="Engine\Source\VertexBuffer.h" />
     <ClInclude Include="Engine\Source\Viewport.h" />
     <ClInclude Include="resource.h" />
@@ -179,6 +181,7 @@
     <ClCompile Include="Dependencies\Imgui\imgui_widgets.cpp" />
     <ClCompile Include="Dependencies\json\parson.c" />
     <ClCompile Include="Dependencies\mmgr\mmgr.cpp" />
+    <ClCompile Include="Engine\Source\2DTransformComponent.cpp" />
     <ClCompile Include="Engine\Source\AboutMenu.cpp" />
     <ClCompile Include="Engine\Source\Application.cpp" />
     <ClCompile Include="Engine\Source\AssimpDefs.cpp" />
@@ -227,6 +230,7 @@
     <ClCompile Include="Engine\Source\UICheckBoxComponent.cpp" />
     <ClCompile Include="Engine\Source\UIImageComponent.cpp" />
     <ClCompile Include="Engine\Source\UIInputBoxComponent.cpp" />
+    <ClCompile Include="Engine\Source\UISliderComponent.cpp" />
     <ClCompile Include="Engine\Source\VertexBuffer.cpp" />
     <ClCompile Include="Engine\Source\Viewport.cpp" />
   </ItemGroup>

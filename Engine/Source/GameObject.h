@@ -32,8 +32,8 @@ public:
 	void DebugColliders();
 
 	Component* CreateComponent(ComponentType type);
+	Component* CreateUIComponent(ComponentType type);
 	void AddComponent(Component* component);
-
 	void CopyComponent(Component* component);
 	
 	void AddChild(GameObject* object);
@@ -65,6 +65,7 @@ public:
 
 	template<typename T>
 	T* GetComponent();
+	int GetComponentID(ComponentType type);
 
 private:
 	std::string name;
