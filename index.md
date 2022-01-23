@@ -6,11 +6,11 @@ TurboTribble is a game engine that we've developed as a project of the Motors de
 
 [**Òscar Canales**](https://github.com/Osvak)
 
-![](https://github.com/Osvak/TurboTribble/blob/gh-pages/docs/OscarPFP.png)
+![](docs/OscarPFP.png)
 
 [**Carles Garriga**](https://github.com/FireAlfa)
 
-![](https://github.com/Osvak/TurboTribble/blob/gh-pages/docs/CarlesPFP.png)
+![](docs/CarlesPFP.png)
 
 ### Main Core Sub-Systems
 
