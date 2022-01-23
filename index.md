@@ -10,6 +10,8 @@ TurboTribble is a game engine that we've developed as a project of the Motors de
 
 [**Carles Garriga**](https://github.com/FireAlfa)
 
+![](https://github.com/Osvak/TurboTribble/blob/gh-pages/docs/CarlesPFP.png)
+
 ### Main Core Sub-Systems
 
 - Camera system
@@ -34,6 +36,7 @@ With this Sub-system
 ### Useful Links
 
 [TurboTribble Repository](https://github.com/Osvak/TurboTribble)
+
 [Download latest release](https://github.com/Osvak/TurboTribble/releases)
 
 ### License
