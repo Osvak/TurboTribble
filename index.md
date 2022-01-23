@@ -1,12 +1,13 @@
-## Welcome to GitHub Pages
+## TurboTribble
 
-You can use the [editor on GitHub](https://github.com/Osvak/TurboTribble/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+TurboTribble is a game engine that we've developed as a project of the Motors de Videojocs subject in [CITM](https://www.citm.upc.edu/) a UPC University center. In this software you can create your dream videogames with an object system developing.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Team
 
-### Markdown
+[**Òscar Canales**](https://github.com/Osvak)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+[**Carles Garriga**](https://github.com/FireAlfa)
+
 
 ```markdown
 Syntax highlighted code block
@@ -28,10 +29,30 @@ Syntax highlighted code block
 
 For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
-### Jekyll Themes
+### Main Core Sub-Systems
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Osvak/TurboTribble/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+- Camera system
+- Model and texture loader (with drag and drop)
+- GameObject systems with components
+- Custom File Format
+- Serialization of the scene
+- Mouse picking for selecting GameObjects
+- Frustum Culling
+- Resource manager system for displaying the files
+- Time management for Game Mode
+- Guizmos for better user experience
+- Multiple viewports
 
-### Support or Contact
+### User Interface Sub-System
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+With this Sub-system 
+
+### User Interface Demo 
+
+
+### Useful Links
+
+[TurboTribble Repository](https://github.com/Osvak/TurboTribble)
+[Download latest release](https://github.com/Osvak/TurboTribble/releases)
+
+
