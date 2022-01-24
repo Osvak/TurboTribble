@@ -31,4 +31,5 @@ private:
 	Color selectedColor = black;
 
 	bool active = true;
+	UIState buttonState = UIState::ENABLED;
 };

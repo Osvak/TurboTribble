@@ -20,6 +20,15 @@ enum class ComponentType
 	UI_SLIDER,
 };
 
+enum class UIState
+{
+	DISABLED,
+	ENABLED,
+	HOVERED,
+	FOCUSED,
+	PRESSED,
+};
+
 class Component
 {
 public:

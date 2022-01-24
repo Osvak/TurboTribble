@@ -4,6 +4,8 @@
 #include "ModuleInput.h"
 #include "Primitive.h"
 
+#include "ModuleUI.h"
+
 #include "glew/include/GL/glew.h"
 
 UIButtonComponent::UIButtonComponent(GameObject* own, std::string text)
@@ -21,10 +23,35 @@ UIButtonComponent::~UIButtonComponent()
 bool UIButtonComponent::Update(float dt)
 {
 
-	if (app->input->GetMouseButton(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN)
+	if (active == false)
 	{
-		OnPressed();
+		buttonState = UIState::DISABLED;
 	}
+
+	if (buttonState != UIState::DISABLED)
+	{
+		if (app->ui->UIGameObjectFocused == owner)
+		{
+			buttonState = UIState::FOCUSED;
+
+			if (app->input->GetMouseButton(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN ||
+				app->input->GetMouseButton(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT)
+			{
+				buttonState = UIState::PRESSED;
+			}
+
+			if (app->input->GetMouseButton(SDL_BUTTON_LEFT) == KeyState::KEY_UP)
+			{
+				OnPressed();
+			}
+		}
+		else
+		{
+			buttonState = UIState::ENABLED;
+		}
+	}
+
+	
 
 	return true;
 }
@@ -54,7 +81,7 @@ void UIButtonComponent::OnEditor()
 
 bool UIButtonComponent::OnPressed()
 {
-
+	buttonState = UIState::PRESSED;
 
 	return true;
 }

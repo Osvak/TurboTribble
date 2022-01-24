@@ -283,6 +283,9 @@
     <ClInclude Include="Engine\Source\UISliderComponent.h">
       <Filter>Sources\GameObject\Components\UI</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Source\Text.h">
+      <Filter>Sources\Tools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Source\ModuleCamera3D.cpp">
